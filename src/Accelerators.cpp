@@ -95,7 +95,7 @@ struct OctTree : IntersectionAccelerator {
 			root->primitives[c]->expandBox(root->box);
 		}
 		build(root);
-		printf(" done in %lldms, nodes %d, depth %d, %d leaf size\n", timer.toMs(timer.elapsedNs()), nodes, depth, leafSize);
+		printf(" done in %dms, nodes %d, depth %d, %d leaf size\n", int(timer.toMs(timer.elapsedNs())), nodes, depth, leafSize);
 	}
 
 	bool intersect(Node *n, const Ray& ray, float tMin, float &tMax, Intersection& intersection) {
@@ -159,4 +159,3 @@ AcceleratorPtr makeDefaultAccelerator() {
 	//return AcceleratorPtr(new BVHTree());
 	return AcceleratorPtr(new OctTree());
 }
-
